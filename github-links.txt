@@ -1,0 +1,89 @@
+dealing with remote branches
+
+	pull all remote branches for a repo
+
+		for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
+
+	To list remote branches:
+
+		git branch -r
+
+	You can check them out as local branches with:
+
+		git checkout -b LocalName origin/remotebranchname
+
+managing multiple github accounts with ssh
+
+	https://medium.freecodecamp.org/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca
+
+	ssh-add -l 
+
+	will list all the SSH keys attached to the ssh-agent. Remove all of them and add the one key you are about to use.
+
+	----------
+
+	to switch to your work identity 
+	
+		//removes all ssh entries from the ssh-agent
+			ssh-add -D 
+
+		// Adds the relevant ssh key
+			ssh-add ~/.ssh/id_rsa_work_user1 
+
+	of course, id_rsa_work_user1 needs to exist first and must be specified in the config file in ~/.ssh
+
+	----------
+
+	to switch to your personal identity 
+
+		//removes all ssh entries from the ssh-agent
+			ssh-add -D 
+
+		// Adds the relevant ssh key
+			ssh-add ~/.ssh/id_rsa
+
+	of course, id_rsa needs to exist first and must be specified in the config file in ~/.ssh
+
+	when in a repo ensure the username and email is correct by checking
+
+		To list the config name and email in the local Git directory, do 
+
+			git config user.name 
+		
+		and 
+
+			git config user.email
+
+		If it's not found, update accordingly.
+
+		// Updates git config user name
+			git config user.name "Pavan Katepalli"   
+		
+		// Updates git config email
+			git config user.email "pavankat@gmail.com"
+
+		when cloning
+
+			The work repository will require a change to be made with this command:
+
+			git clone git@github.com-work_user1:work_user1/repo_name.git
+
+			work_user1 is what was set up in the config file of ~/.ssh
+
+deleting commits
+
+	https://www.clock.co.uk/insight/deleting-a-git-commit
+
+	if you want to go back in time to a particular commit
+
+	then you can do this:
+
+		Reset master to last usable commit.
+		$ git reset --hard b3d92c5 
+		
+		Push master to the remote repo.
+		git push --hard origin master 
+
+	to do more complex things - check out the link above
+
+	
