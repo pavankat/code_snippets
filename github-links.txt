@@ -62,13 +62,22 @@ managing multiple github accounts with ssh
 		// Updates git config email
 			git config user.email "pavankat@gmail.com"
 
-		when cloning
+	when cloning
 
-			The work repository will require a change to be made with this command:
+		The work repository will require a change to be made with this command:
 
-			git clone git@github.com-work_user1:work_user1/repo_name.git
+		git clone git@github.com-work_user1:work_user1/repo_name.git
 
-			work_user1 is what was set up in the config file of ~/.ssh
+		work_user1 is what was set up in the config file of ~/.ssh
+
+		to find this out do this
+
+		cat ~/.ssh/config
+
+		and look at what comes after
+
+		# Work account-1
+		Host github.com-
 
 deleting commits
 
