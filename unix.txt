@@ -1,0 +1,11 @@
+kill all the processes related to mongod
+
+	pkill -f mongod
+
+find what programs are running on port 3000
+
+	lsof -i tcp:3000 
+
+kill what's running at specific PID
+
+	kill -9 PID
